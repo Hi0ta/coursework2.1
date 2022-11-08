@@ -3,7 +3,6 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 public class MainScanner {
-
     public static void main(String[] args) {
         Event event = new Event();
         Planner planner = new Planner();
@@ -44,28 +43,28 @@ public class MainScanner {
 
     }
     private static void addTask(Scanner scanner, Event event, Planner planner) {
-        //если написать более одного слова в консоли программа ломается, если вместо next() использовать nextLine() программа выбрасывает исключение как будто поле "заголовок" не заполнено
+
         System.out.print("Что произойдет? ");
-        String heading = scanner.next();
+        String heading = scanner.next().concat(scanner.nextLine());
         event.setHeading(heading);
-        //если написать более одного слова в консоли программа ломается, если вместо next() использовать nextLine() программа выбрасывает исключение как будто поле "описание" не заполнено
+
         System.out.print("Подробности: ");
-        String description = scanner.next();
+        String description = scanner.nextLine();
         event.setDescription(description);
-        //как написать условия проверки на случай если ввели не инт или инт не из списка, что бы программа возвращала нас к началу выбора
+        // написать условия проверки на случай если ввели не инт или инт не из списка, что бы программа возвращала нас к началу выбора
         System.out.println("1 личное \n" + "2 рабочее ");
         if (scanner.hasNextInt()) {
             int type = scanner.nextInt();
-            switch (type) {
-                case 1:
-                    event.setEventType(Event.EventType.PERSONAL);
-                    break;
-                case 2:
-                    event.setEventType(Event.EventType.WORKER);
-                    break;
-            }
+                switch (type) {
+                    case 1:
+                        event.setEventType(Event.EventType.PERSONAL);
+                        break;
+                    case 2:
+                        event.setEventType(Event.EventType.WORKER);
+                        break;
+                }
         }
-        //как написать условия проверки на случай если ввели  не инт или инт не из списка, что бы программа возвращала нас к началу выбора.
+        //написать условия проверки на случай если ввели  не инт или инт не из списка, что бы программа возвращала нас к началу выбора.
         System.out.println("Повторять? \n" + "1 Нет \n" + "2 Ежедневно \n" + "3 Еженедельно \n" + "4 Ежемесячно \n" + "5 Ежегодно ");
         if (scanner.hasNextInt()) {
             int menu = scanner.nextInt();
@@ -87,11 +86,11 @@ public class MainScanner {
                     break;
             }
         }
-        // как написать условия проверки что бы при неверном формате введения пользователем программа предлагала ввести дату заново
+        // написать условия проверки что бы при неверном формате введения пользователем программа предлагала ввести дату заново
         System.out.print("Когда? (введите в формате ГГГГ-ММ-ДД) ");
         LocalDate date = LocalDate.parse(scanner.next());
         event.setDate(date);
-        // как написать условия проверки что бы при неверном формате введения пользователем программа предлагала ввести время заново
+        // написать условия проверки что бы при неверном формате введения пользователем программа предлагала ввести время заново
         System.out.print("Во сколько? (введите в формате ЧЧ:ММ) ");
         LocalTime time = LocalTime.parse(scanner.next());
         event.setTime(time);
@@ -101,14 +100,16 @@ public class MainScanner {
     private static void deleteTask(Scanner scanner, Planner planner){
         System.out.print("Для удаления введите номер эвента ");
         Integer Key = scanner.nextInt();
-        //как написать условия проверки на случай если ввели неверный ключ/или не существующий, что бы программа снова предложила ввести ключ
+        //написать условия проверки на случай если ввели неверный ключ/или не существующий, что бы программа снова предложила ввести ключ
         planner.deleteEvent(Key);
     }
     private static void printTasksForTheDate(Scanner scanner, Planner planner){
         System.out.print("На какую дату желаете посмотреть полный список эвентов? (введите в формате ГГГГ-ММ-ДД) ");
         LocalDate date = LocalDate.parse(scanner.next());
-        //как написать условия проверки на случай если ввели дату на которую нет событий.
+        // написать условия проверки на случай если ввели дату на которую нет событий.
+        System.out.println();
         planner.printPlannerForTheDate(date);
+        System.out.println();
     }
 }
 

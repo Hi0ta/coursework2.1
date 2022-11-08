@@ -122,29 +122,7 @@ public class Event {
     @Override
     public String toString() {
         return "Событие: " + " № " + id + ", что произойдет: " + heading + ", подробности: " + description +
-                ", тип: " + eventType.name + ", повтор: " + repeat.name + ", когда: " + date + ", во сколько: " + time;
+                ", когда: " + date + ", во сколько: " + time + ", тип: " + eventType.name + ", повтор: " + repeat.name;
     }
-//    @Override
-//    public LocalDate getDaily() {
-//        date = date.plusDays(1);
-//        return date;
-//    }
-//
-//    @Override
-//    public LocalDate getWeekly() {
-//            date = date.plusWeeks(1);
-//        return date;
-//    }
-//
-//    @Override
-//    public LocalDate getMonthly() {
-//            date = date.plusMonths(1);
-//        return date;
-//    }
-//
-//    @Override
-//    public LocalDate getAnnual() {
-//            date = date.plusYears(1);
-//        return date;
-//    }
+
 }
